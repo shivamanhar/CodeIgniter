@@ -200,15 +200,12 @@ if ( ! function_exists('form_input'))
 	 * @param	string
 	 * @return	string
 	 */
-	function form_input($data = '', $value = '', $extra = '')
+	
+	function form_input($data = '', $type ='text', $value = '', $extra = '')
 	{
-		$defaults = array(
-			'type' => 'text',
-			'name' => is_array($data) ? '' : $data,
-			'value' => $value
-		);
+		$defaults = array('type' => $type, 'name' => (( ! is_array($data)) ? $data : ''), 'value' => $value);
 
-		return '<input '._parse_form_attributes($data, $defaults).$extra." />\n";
+		return "<input "._parse_form_attributes($data, $defaults).$extra." />";
 	}
 }
 
